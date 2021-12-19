@@ -9,9 +9,9 @@ Labels are made from the name and a semicolon, ex.: "label:".
 
 
 Instructions:
--open <txt file name> - open the file, push it to the file stack and execute its instructions;
--remove <txt file name> - remove the file;
--write <txt file name> start (…) end write - open or create a text file, put cursor on the end of this file and start writing into it with text found between the "start" and the "end write" instructions;
+*open <txt file name> - open the file, push it to the file stack and execute its instructions;
+*remove <txt file name> - remove the file;
+*write <txt file name> start (…) end write - open or create a text file, put cursor on the end of this file and start writing into it with text found between the "start" and the "end write" instructions;
 -rewrite <txt file name> start…end write - open or create a text file, remove its content and start writing into it with text found between the “start” and the "end write" instructions;
 -"<text>" - write text found in the quotation marks on the stdout;
 -add <reg> <number> - add <number> to the register;
