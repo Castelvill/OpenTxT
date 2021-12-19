@@ -9,27 +9,27 @@ Labels are made from the name and a semicolon, ex.: "label:".
 
 
 Instructions:
-*open <txt file name> - open the file, push it to the file stack and execute its instructions;
-*remove <txt file name> - remove the file;
-*write <txt file name> start (…) end write - open or create a text file, put cursor on the end of this file and start writing into it with text found between the "start" and the "end write" instructions;
--rewrite <txt file name> start…end write - open or create a text file, remove its content and start writing into it with text found between the “start” and the "end write" instructions;
--"<text>" - write text found in the quotation marks on the stdout;
--add <reg> <number> - add <number> to the register;
--sub <reg> <number> - substract <number> from the register;
--mul <reg> <number> - multiply the register by the <number>;
--div <reg> <number> - divide the register by the <number>;
--set <reg> <number> - set value of the register to the <value>;
--neg <reg> - negate the value in the register;
--print <reg> - return register's value to the stdout;
--return - close the file and set system registers to the values of closed file’s registers;
--input <reg> - wait for user's input and save it to the register;
--jmp <label> - jump to the label;
--jge <reg> <number> <label> - jump to the <label> if the register's value is greater or equal to <number>;
--jle <reg> <number> <label> - jump to the <label> if the register's value is lower or equal to <number>;
--jg <reg> <number> <label> - jump to the <label> if the register's value is greater from <number>;
--jl <reg> <number> <label> - jump to the <label> if the register's value is lower than <number>;
--jex <file> <label> - jump to the <label> if the file exists;
--jnex <file> <label> - jump to the <label> if the file doesn’t exist.
+- open <txt file name> - open the file, push it to the file stack and execute its instructions;
+- remove <txt file name> - remove the file;
+- write <txt file name> start (…) end write - open or create a text file, put cursor on the end of this file and start writing into it with text found between the "start" and the "end write" instructions;
+- rewrite <txt file name> start…end write - open or create a text file, remove its content and start writing into it with text found between the “start” and the "end write" instructions;
+- "<text>" - write text found in the quotation marks on the stdout;
+- add <reg> <number> - add <number> to the register;
+- sub <reg> <number> - substract <number> from the register;
+- mul <reg> <number> - multiply the register by the <number>;
+- div <reg> <number> - divide the register by the <number>;
+- set <reg> <number> - set value of the register to the <value>;
+- neg <reg> - negate the value in the register;
+- print <reg> - return register's value to the stdout;
+- return - close the file and set system registers to the values of closed file’s registers;
+- input <reg> - wait for user's input and save it to the register;
+- jmp <label> - jump to the label;
+- jge <reg> <number> <label> - jump to the <label> if the register's value is greater or equal to <number>;
+- jle <reg> <number> <label> - jump to the <label> if the register's value is lower or equal to <number>;
+- jg <reg> <number> <label> - jump to the <label> if the register's value is greater from <number>;
+- jl <reg> <number> <label> - jump to the <label> if the register's value is lower than <number>;
+- jex <file> <label> - jump to the <label> if the file exists;
+- jnex <file> <label> - jump to the <label> if the file doesn’t exist.
 
   
 Example code is in "examples" file.
