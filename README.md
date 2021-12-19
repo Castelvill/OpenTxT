@@ -1,6 +1,8 @@
 # OpenTxT
 Assembler but bad, but with easy way to work with txt files. It's a mess.
 
+To execute txt file in a normal mode use: "boot (name without .txt)".
+To execute txt file in a debug mode use: "debug (name without .txt)".
 
 You can write and read from four registers (integers) using 'a', 'b', 'c', 'd' (or 'reg1', 'reg2', 'reg3', 'reg4', 'r1', 'r2', 'r3', 'r4').
 You can also read from four "system registers" (integers) using "sreg1", "sreg2", "sreg3", "sreg4" (or "sr1", "sr2", "sr3", "sr4").
