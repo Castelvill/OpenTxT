@@ -17,6 +17,7 @@ Instructions:
 - write (name) start (…) end write - open or create a text file, put cursor on the end of this file and start writing into it with text found between the "start" and the "end write" instructions;
 - rewrite (name) start…end write - open or create a text file, remove its content and start writing into it with text found between the “start” and the "end write" instructions;
 - "(text)" - write text found in the quotation marks on the stdout;
+- endl - go to a new line;
 - add (reg) (number) - add <number> to the register;
 - sub (reg) (number) - substract <number> from the register;
 - mul (reg) (number) - multiply the register by the <number>;
@@ -35,4 +36,4 @@ Instructions:
 - jnex (file) (label) - jump to the <label> if the file doesn’t exist.
 
   
-Example code is in "examples" file.
+Example codes (.txt files) are in "examples" file.
