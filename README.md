@@ -33,7 +33,9 @@ Instructions:
 - jg (reg) (number) (label) - jump to the <label> if the register's value is greater from <number>;
 - jl (reg) (number) (label) - jump to the <label> if the register's value is lower than <number>;
 - jex (file) (label) - jump to the <label> if the file exists;
-- jnex (file) (label) - jump to the <label> if the file doesn’t exist.
+- jnex (file) (label) - jump to the <label> if the file doesn’t exist;
+- sleep (number) - stop program for (number) miliseconds.
+  
 
   
 Example codes (.txt files) are in "examples" file.
