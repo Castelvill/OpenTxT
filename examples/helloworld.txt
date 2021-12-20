@@ -1,0 +1,9 @@
+rewrite hello
+"hello "
+end write
+rewrite world
+"world"
+end write
+open hello
+open world
+endl
