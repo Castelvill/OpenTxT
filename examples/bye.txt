@@ -1,0 +1,2 @@
+remove hello
+remove world

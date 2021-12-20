@@ -1,0 +1,31 @@
+main:
+jmp newHeart
+back0:
+sleep 200
+set a 0
+for1:
+add a 1
+jmp addBum
+back1:
+jl a 5 for1
+sleep 300
+jmp rmHeart
+back2:
+jmp main
+
+addBum:
+write heartObj
+"Bum"
+end write
+sleep 200
+jmp back1
+
+newHeart:
+rewrite heartObj
+end write
+jmp back0
+
+rmHeart:
+remove heartObj
+jmp back2
+

@@ -1,0 +1,9 @@
+"Let's write hello world 5 times!"
+endl
+set a 0
+
+hello:
+"hello world"
+endl
+add a 1
+jl a 5 hello
