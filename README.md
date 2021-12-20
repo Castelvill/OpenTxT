@@ -8,7 +8,8 @@ You can write and read from four registers (integers) using 'a', 'b', 'c', 'd' (
 You can also read from four "system registers" (integers) using "sreg1", "sreg2", "sreg3", "sreg4" (or "sr1", "sr2", "sr3", "sr4").
 System registers are updated with registers' values when exiting the file with "return" instruction.
 Labels are made from the name and a semicolon, ex.: "label:".
-By (number) I mean integer, register or system register. 
+'(number)' means an integer, register or system register.
+Token is a type of a label created during program's execution and stored on the stack. Using 'jmpt' you can jump to the last token. You can create a token by adding 't' or 'token' argument to the end of each jump instruction line, for example "jge a b label token".
 
 
 Instructions:
@@ -34,6 +35,7 @@ Instructions:
 - jl (reg) (number) (label) - jump to the <label> if the register's value is lower than <number>;
 - jex (file) (label) - jump to the <label> if the file exists;
 - jnex (file) (label) - jump to the <label> if the file doesn’t exist;
+- jmpt - jump to the last token on stack;
 - sleep (number) - stop program for (number) miliseconds.
   
 
