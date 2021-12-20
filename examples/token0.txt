@@ -1,0 +1,15 @@
+main:
+"1"
+jmp dwa t
+"exit"
+return
+
+dwa:
+"2"
+jmp trzy t
+jmpt
+
+trzy:
+"3"
+jmpt
+"4"

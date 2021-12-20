@@ -1,0 +1,15 @@
+main:
+set a 0
+"How many X? "
+input b
+jmp wrX t
+"Y"
+endl
+return
+
+wrX:
+"X"
+add a 1
+jl a b wrX
+endl
+jmpt
