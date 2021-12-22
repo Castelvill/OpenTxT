@@ -4,24 +4,30 @@
 #include <vector>
 #include <windows.h>
 #include <stdio.h>
+#include <pthread.h>
+#include <conio.h>
 
 using namespace std;
 
-struct bootUnion{
+struct bootStruct{
     string fileName;
     bool exitProgram;
     bool debug;
+    int debugDelay;
     int error;
 };
 
-bootUnion bootLoop(){
+bootStruct bootLoop(){
+    cin.clear();
+
     string buffer;
     vector <string> argv;
 
-    bootUnion bootU;
+    bootStruct bootU;
     bootU.fileName = "";
     bootU.exitProgram = false;
     bootU.debug = false;
+    bootU.debugDelay = 200;
     bootU.error = 0;
 
     do{
@@ -52,9 +58,13 @@ bootUnion bootLoop(){
             bootU.fileName = argv[0].substr(2, argv[0].size());
             return bootU;
         }
-        else if(argv[0] == "debug" && argv.size() == 2){
+        else if(argv[0] == "debug" && argv.size() >= 2){
             bootU.debug = true;
             bootU.fileName = argv[1];
+            if(argv.size() == 3){
+                bootU.debugDelay = atoi(argv[2].c_str());
+                cout << "Delay: " << bootU.debugDelay << "\n";
+            }
             return bootU;
         }
         else if(argv[0] == "exit" && argv.size() == 1){
@@ -139,9 +149,27 @@ int sRegIndex(string reg){
     return -1;
 }
 
+
+
+
+
+static volatile bool keep_running = true;
+
+static void* userInput_thread(void*)
+{
+    keep_running = true;
+    while(keep_running) {
+       if (getch() == 'q'){
+           //! desired user input 'q' received
+           keep_running = false;
+       }
+   }
+}
+
+
 int main()
 {
-    bootUnion bootU;
+    bootStruct bootU;
     vector <File> Files;
     string buffer, buffer2;
     int temp1, temp2;
@@ -153,6 +181,8 @@ int main()
     int flag;
     bool noEndlDebug;
     ofstream writeOnlyFile;
+
+    pthread_t tId;
 
     while(1){
         bootU = bootLoop();
@@ -179,8 +209,18 @@ int main()
         flag = 0;
         noEndlDebug = false;
 
+        (void) pthread_create(&tId, 0, userInput_thread, 0);
+
         for(int fileStack = 0; fileStack > -1; fileStack--){
             for(Files[fileStack].head; Files[fileStack].head < Files[fileStack].fileLines.size(); Files[fileStack].head++){
+
+
+                if(keep_running == false){
+                    fileStack = -1;
+                    break;
+                }
+
+
                 buffer = Files[fileStack].fileLines[Files[fileStack].head];
 
                 if(buffer == "end write"){
@@ -192,7 +232,7 @@ int main()
                 if(flag == 1){
                     if(debug){
                         cout << "\n[writing]" << fileStack << "|"<< Files[fileStack].head << "> " << buffer;
-                        Sleep(200);
+                        Sleep(bootU.debugDelay);
                     }
                     writeOnlyFile << buffer << "\n";
                     continue;
@@ -440,10 +480,17 @@ int main()
                 }
             }
             if(flag != 2){
+                Files.back().descriptor.close();
                 Files.pop_back();
             }
         }
-        Files[0].descriptor.close();
+        while(Files.size() > 0){
+            Files.back().descriptor.close();
+            Files.pop_back();
+        }
+
+        (void) pthread_join(tId, NULL);
+
         cout << "\n";
         cin.clear();
         cin.ignore();
