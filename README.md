@@ -19,22 +19,22 @@ Instructions:
 - rewrite (name) start…end write - open or create a text file, remove its content and start writing into it with text found between the “start” and the "end write" instructions;
 - "(text)" - write text found in the quotation marks on the stdout;
 - endl - go to a new line;
-- add (reg) (number) - add <number> to the register;
-- sub (reg) (number) - substract <number> from the register;
-- mul (reg) (number) - multiply the register by the <number>;
-- div (reg) (number) - divide the register by the <number>;
-- set (reg) (number) - set value of the register to the <value>;
+- add (reg) (number) - add (number) to the register;
+- sub (reg) (number) - substract (number) from the register;
+- mul (reg) (number) - multiply the register by the (number);
+- div (reg) (number) - divide the register by the (number);
+- set (reg) (number) - set value of the register to the (number);
 - neg (reg) - negate the value in the register;
 - print (reg) - return register's value to the stdout;
 - return - close the file and set system registers to the values of closed file’s registers;
 - input (reg) - wait for user's input and save it to the register;
-- jmp (label) - jump to the label;
-- jge (reg) (number) (label) - jump to the <label> if the register's value is greater or equal to <number>;
-- jle (reg) (number) (label) - jump to the <label> if the register's value is lower or equal to <number>;
-- jg (reg) (number) (label) - jump to the <label> if the register's value is greater from <number>;
-- jl (reg) (number) (label) - jump to the <label> if the register's value is lower than <number>;
-- jex (file) (label) - jump to the <label> if the file exists;
-- jnex (file) (label) - jump to the <label> if the file doesn’t exist;
+- jmp (label) - jump to the (number);
+- jge (reg) (number) (label) - jump to the (label) if the register's value is greater or equal to (number);
+- jle (reg) (number) (label) - jump to the (label) if the register's value is lower or equal to (number);
+- jg (reg) (number) (label) - jump to the (label) if the register's value is greater from (number);
+- jl (reg) (number) (label) - jump to the (label) if the register's value is lower than (number);
+- jex (file) (label) - jump to the (label) if the file exists;
+- jnex (file) (label) - jump to the (label) if the file doesn’t exist;
 - jmpt - jump to the last token on stack;
 - sleep (number) - stop program for (number) miliseconds.
   
