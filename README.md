@@ -1,5 +1,5 @@
 # OpenTxT
-Compiler for OpenTxT "programming language". OpenTxT is my simplified take on Assembly language. It focuses on .txt files.
+Interpreter for OpenTxT "programming language". OpenTxT is my simplified take on Assembly language. It focuses on .txt files.
 
 To execute .txt file in a normal mode use: "boot (name without .txt)" or "./(name without .txt)".
 To execute .txt file in a debug mode use: "debug (name without .txt)".
