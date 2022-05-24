@@ -29,6 +29,8 @@ bootStruct bootLoop(){
     bootU.debugDelay = 200;
     bootU.error = 0;
 
+    bool printed = false;
+
     do{
         cout << ">>> ";
 
@@ -153,7 +155,7 @@ int parser(bootStruct bootU){
     vector <File> Files;
     string buffer, buffer2;
     int temp1;
-    int sReg[4]; //system registers, from programmer's perspective read only
+    int sReg[4]; //system registers, from user's perspective read only
 
     vector <string> argv;
     unsigned int i;
@@ -196,7 +198,7 @@ int parser(bootStruct bootU){
                             writeOnlyFile << chara;
                         }
                         else if(dollarSignFound){
-                            if(chara != ' '){
+                            if(chara != ' ' && chara != '"'){
                                 dolar += chara;
                             }
                             else{
@@ -204,7 +206,7 @@ int parser(bootStruct bootU){
                                     writeOnlyFile << Files[fileStack].reg[regIndex(dolar)];
                                 if(sRegIndex(dolar) != -1)
                                     writeOnlyFile << sReg[sRegIndex(dolar)];
-                                writeOnlyFile << ' ';
+                                writeOnlyFile << chara;
                                 dollarSignFound = false;
                                 dolar = "";
                             }
@@ -416,6 +418,7 @@ int parser(bootStruct bootU){
                     cin >> buffer2;
                     Files[fileStack].reg[regIndex(argv[1])] = atoi(buffer2.c_str());
                     cin.clear();
+                    cin.ignore();
                     if(debug){
                         noEndlDebug = true;
                     }
@@ -429,14 +432,14 @@ int parser(bootStruct bootU){
             else if(argv[0] == "open"){
                 if(argv.size() >= 2){
                     Files.push_back(File());
-                    Files[Files.size()-1].descriptor.open(argv[1]+".txt");
-                    if(!Files[Files.size()-1].descriptor){
+                    Files.back().descriptor.open(argv[1]+".txt");
+                    if(!Files.back().descriptor){
                         Files.pop_back();
                         continue;
                     }
                     flag = 2;
                     Files[fileStack].head++;
-                    Files[Files.size()-1].load();
+                    Files.back().load();
                     fileStack += 2;
                     break;
                 }
@@ -480,6 +483,9 @@ int parser(bootStruct bootU){
         if(flag != 2){
             Files.back().descriptor.close();
             Files.pop_back();
+        }
+        else{
+            flag = 0;
         }
     }
     return -1;
