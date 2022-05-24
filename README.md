@@ -1,7 +1,7 @@
 # OpenTxT
 Interpreter for OpenTxT "programming language". OpenTxT is my simplified take on Assembly language. It focuses on .txt files.
 
-To execute .txt file in a normal mode use: "boot (name without .txt)" or "./(name without .txt)".
+To execute .txt file in a normal mode use: "open (name without .txt)".
 To execute .txt file in a debug mode use: "debug (name without .txt)".
 
 You can write and read from four registers (integers) using 'a', 'b', 'c', 'd' (or 'reg1', 'reg2', 'reg3', 'reg4', 'r1', 'r2', 'r3', 'r4').
