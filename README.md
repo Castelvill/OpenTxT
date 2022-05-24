@@ -4,14 +4,14 @@ Interpreter for OpenTxT "programming language". OpenTxT is my simplified take on
 To execute .txt file in a normal mode use: "open (name without .txt)".
 To execute .txt file in a debug mode use: "debug (name without .txt)".
 
-You can write and read from four registers (integers) using 'a', 'b', 'c', 'd' (or 'reg1', 'reg2', 'reg3', 'reg4', 'r1', 'r2', 'r3', 'r4').
-You can also read from four "system registers" (integers) using 'e', 'f', 'g', 'h' (or 'sreg1', 'sreg2', 'sreg3', 'sreg4', 'sr1', 'sr2', 'sr3', 'sr4').
-System registers are updated with registers' values when exiting the file with "return" instruction.
-Labels are made from the name and a semicolon, ex.: "label:".
-'(number)' means an integer, register or system register.
-Token is a type of a label created during program's execution and stored on the stack. Using 'jmpt' you can jump to the last token. You can create a token by adding 't' or 'token' argument to the end of each jump instruction line, for example "jge a b label token".
-While writing to the opened file you can use '$' in front of register's name in order to implant the value of existing register into the file, ex.: "set a $a".
-<br>You can use 'clear' command to clear the console.
+You can write and read from four registers (integers) using 'a', 'b', 'c', 'd' (or 'reg1', 'reg2', 'reg3', 'reg4', 'r1', 'r2', 'r3', 'r4').<br>
+You can also read from four "system registers" (integers) using 'e', 'f', 'g', 'h' (or 'sreg1', 'sreg2', 'sreg3', 'sreg4', 'sr1', 'sr2', 'sr3', 'sr4').<br>
+System registers are updated with registers' values when exiting the file with "return" instruction.<br>
+Labels are made from the name and a semicolon, ex.: "label:".<br>
+'(number)' means an integer, register or system register.<br>
+Token is a type of a label created during program's execution and stored on the stack. Using 'jmpt' you can jump to the last token. You can create a token by adding 't' or 'token' argument to the end of each jump instruction line, for example "jge a b label token".<br>
+While writing to the opened file you can use '$' in front of register's name in order to implant the value of existing register into the file, ex.: "set a $a".<br>
+You can use 'clear' command to clear the console.
 
 
 Instructions:
