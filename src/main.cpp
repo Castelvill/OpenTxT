@@ -325,7 +325,7 @@ int parser(bootStruct bootU){
                     cout << Files[fileStack].reg[regIndex(argv[1])];
 
                 }
-                else if(sRegIndex(argv[1]) == -1){
+                else if(sRegIndex(argv[1]) != -1){
                     cout << sReg[sRegIndex(argv[1])];
                 }
                 if(!debug)
