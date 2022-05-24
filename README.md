@@ -11,7 +11,7 @@ Labels are made from the name and a semicolon, ex.: "label:".
 '(number)' means an integer, register or system register.
 Token is a type of a label created during program's execution and stored on the stack. Using 'jmpt' you can jump to the last token. You can create a token by adding 't' or 'token' argument to the end of each jump instruction line, for example "jge a b label token".
 While writing to the opened file you can use '$' in front of register's name in order to implant the value of existing register into the file, ex.: "set a $a".
-Use 'clear' command to clear the console.
+<br>You can use 'clear' command to clear the console.
 
 
 Instructions:
