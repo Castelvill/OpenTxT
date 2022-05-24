@@ -29,8 +29,6 @@ bootStruct bootLoop(){
     bootU.debugDelay = 200;
     bootU.error = 0;
 
-    bool printed = false;
-
     do{
         cout << ">>> ";
 
@@ -51,12 +49,8 @@ bootStruct bootLoop(){
         if(argv.back() == "")
             argv.pop_back();
 
-        if(argv[0] == "boot" && argv.size() == 2){
+        if(argv[0] == "open" && argv.size() == 2){
             bootU.fileName = argv[1];
-            return bootU;
-        }
-        else if(argv[0].substr(0, 2) == "./"){
-            bootU.fileName = argv[0].substr(2, argv[0].size());
             return bootU;
         }
         else if(argv[0] == "debug" && argv.size() >= 2){
@@ -255,6 +249,7 @@ int parser(bootStruct bootU){
                 else
                     argv.back() += buffer[i];
             }
+
             if(argv.back() == "")
                 argv.pop_back();
 
@@ -330,8 +325,6 @@ int parser(bootStruct bootU){
                 else if(sRegIndex(argv[1]) != -1){
                     cout << sReg[sRegIndex(argv[1])];
                 }
-                if(!debug)
-                    cout << "\n";
             }
             else if(argv[0] == "jmpt"){
                 if(Files[fileStack].tokens.size() > 0){
@@ -478,6 +471,9 @@ int parser(bootStruct bootU){
                     }
 
                 }
+            }
+            else if(argv[0] == "clear"){
+                system("cls");
             }
         }
         if(flag != 2){
