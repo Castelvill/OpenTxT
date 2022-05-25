@@ -170,10 +170,14 @@ int parser(bootStruct bootU){
     noEndlDebug = false;
 
     bool dollarSignFound = false;
+    bool artificialJump = false;
 
     for(int fileStack = 0; fileStack > -1; fileStack--){
         for(Files[fileStack].head; Files[fileStack].head < Files[fileStack].fileLines.size(); Files[fileStack].head++){
-            buffer = Files[fileStack].fileLines[Files[fileStack].head];
+            if(!artificialJump)
+                buffer = Files[fileStack].fileLines[Files[fileStack].head];
+            else
+                artificialJump = false;
             if(buffer == "end write"){
                 flag = 0;
                 if(writeOnlyFile)
@@ -434,6 +438,11 @@ int parser(bootStruct bootU){
                     Files[fileStack].head++;
                     Files.back().load();
                     fileStack += 2;
+                    if(argv.size() >= 3){
+                        buffer = "jmp " + argv[2];
+                        artificialJump = true;
+                    }
+                    
                     break;
                 }
             }
